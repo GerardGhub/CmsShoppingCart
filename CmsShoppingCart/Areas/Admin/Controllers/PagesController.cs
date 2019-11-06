@@ -110,5 +110,25 @@ namespace CmsShoppingCart.Areas.Admin.Controllers
 
             return View(page);
         }
+
+        // GET /admin/pages/delete/5
+        public async Task<IActionResult> Delete(int id)
+        {
+            Page page = await context.Pages.FindAsync(id);
+
+            if (page == null)
+            {
+                TempData["Error"] = "The page does not exist!";
+            } 
+            else
+            {
+                context.Pages.Remove(page);
+                await context.SaveChangesAsync();
+
+                TempData["Success"] = "The page has been deleted!";
+            }
+
+            return RedirectToAction("Index");
+        }
     }
 }
