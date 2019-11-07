@@ -16,6 +16,8 @@
     <Compile Include="Migrations\20191105182113_InitialCreate.Designer.cs" />
     <Compile Include="Migrations\20191107071423_SecondCreate.cs" />
     <Compile Include="Migrations\20191107071423_SecondCreate.Designer.cs" />
+    <Compile Include="Migrations\20191107084810_ThirdCreate.cs" />
+    <Compile Include="Migrations\20191107084810_ThirdCreate.Designer.cs" />
     <Compile Include="Migrations\CmsShoppingCartContextModelSnapshot.cs" />
   </ItemGroup>
 
