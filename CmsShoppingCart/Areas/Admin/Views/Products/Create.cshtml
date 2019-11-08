@@ -40,6 +40,7 @@
             <div class="form-group">
                 <label asp-for="Image" class="control-label">Product Image</label>
                 <input asp-for="ImageUpload" class="form-control" />
+                <img src="" id="imgpreview" alt="" />
                 <span asp-validation-for="ImageUpload" class="text-danger"></span>
             </div>
 
@@ -58,6 +59,10 @@
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 
     <script>
-            CKEDITOR.replace("Description");
+        CKEDITOR.replace("Description");
+
+        $("#ImageUpload").change(function () {
+            readURL(this);
+        });
     </script>
 }
