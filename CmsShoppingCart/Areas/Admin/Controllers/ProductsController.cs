@@ -75,7 +75,6 @@ namespace CmsShoppingCart.Areas.Admin.Controllers
                     FileStream fs = new FileStream(filePath, FileMode.Create);
                     await product.ImageUpload.CopyToAsync(fs);
                     fs.Close();
-                    product.Image = imageName;
                 }
 
                 context.Add(product);
