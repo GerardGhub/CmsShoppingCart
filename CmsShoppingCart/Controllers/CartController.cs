@@ -55,7 +55,7 @@ namespace CmsShoppingCart.Controllers
         }
         
         // GET /cart/decrease/5
-        public async Task<IActionResult> Decrease(int id)
+        public IActionResult Decrease(int id)
         {
             List<CartItem> cart = HttpContext.Session.GetJson<List<CartItem>>("Cart");
 
@@ -70,11 +70,32 @@ namespace CmsShoppingCart.Controllers
                 cart.RemoveAll(x => x.ProductId == id);
             }
 
-            HttpContext.Session.SetJson("Cart", cart);
+            if (cart.Count == 0)
+            {
+                HttpContext.Session.Remove("Cart");
+            }
+            else
+            {
+                HttpContext.Session.SetJson("Cart", cart);
+            }
+
+            return RedirectToAction("Index");
+        }
+        
+        // GET /cart/remove/5
+        public IActionResult Remove(int id)
+        {
+            List<CartItem> cart = HttpContext.Session.GetJson<List<CartItem>>("Cart");
+
+            cart.RemoveAll(x => x.ProductId == id);
 
             if (cart.Count == 0)
             {
                 HttpContext.Session.Remove("Cart");
+            }
+            else
+            {
+                HttpContext.Session.SetJson("Cart", cart);
             }
 
             return RedirectToAction("Index");
