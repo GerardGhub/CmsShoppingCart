@@ -30,5 +30,28 @@ namespace CmsShoppingCart.Controllers
 
             return View(cartVM);
         }
+        
+        // GET /cart/add/5
+        public async Task<IActionResult> Add(int id)
+        {
+            Product product = await context.Products.FindAsync(id);
+
+            List<CartItem> cart = HttpContext.Session.GetJson<List<CartItem>>("Cart") ?? new List<CartItem>();
+
+            CartItem cartItem = cart.Where(x => x.ProductId == id).FirstOrDefault();
+
+            if (cartItem == null)
+            {
+                cart.Add(new CartItem(product));
+            } 
+            else
+            {
+                cartItem.Quantity += 1;
+            }
+
+            HttpContext.Session.SetJson("Cart", cart);
+
+            return RedirectToAction("Index");
+        }
     }
 }
