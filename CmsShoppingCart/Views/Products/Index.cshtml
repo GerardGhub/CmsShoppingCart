@@ -25,7 +25,7 @@
                 @item.Price.ToString("C2")
             </p>
             <p>
-                <a asp-controller="Cart" asp-action="Add" asp-route-id="@item.Id" data-id="@item.Id" class="btn btn-primary">Add to cart</a>
+                <a asp-controller="Cart" asp-action="Add" asp-route-id="@item.Id" data-id="@item.Id" class="btn btn-primary addToCart">Add to cart</a>
             </p>
         </div>
     }
@@ -37,3 +37,23 @@
         </div>
     }
 </div>
+
+@section Scripts {
+
+<script>
+    $(function () {
+
+        $("a.addToCart").click(function (e) {
+            e.preventDefault();
+
+            let id = $(this).data("id");
+
+            $.get('/cart/add/' + id, {}, function (data) {
+                $("div.smallcart").html(data);
+            });
+        });
+
+    });
+</script>
+
+}
