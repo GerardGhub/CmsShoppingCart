@@ -18,10 +18,13 @@
     <Compile Include="Migrations\20191107071423_SecondCreate.Designer.cs" />
     <Compile Include="Migrations\20191107084810_ThirdCreate.cs" />
     <Compile Include="Migrations\20191107084810_ThirdCreate.Designer.cs" />
+    <Compile Include="Migrations\20191112101405_IdentityCreate.cs" />
+    <Compile Include="Migrations\20191112101405_IdentityCreate.Designer.cs" />
     <Compile Include="Migrations\CmsShoppingCartContextModelSnapshot.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.0.0">
       <PrivateAssets>all</PrivateAssets>
