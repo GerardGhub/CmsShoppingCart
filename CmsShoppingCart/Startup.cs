@@ -38,7 +38,13 @@ namespace CmsShoppingCart
 
             services.AddDbContext<CmsShoppingCartContext>(options => options.UseSqlServer(Configuration.GetConnectionString("CmsShoppingCartContext")));
 
-            services.AddIdentity<AppUser, IdentityRole>()
+            services.AddIdentity<AppUser, IdentityRole>(options => {
+                        options.Password.RequiredLength = 4;
+                        options.Password.RequireNonAlphanumeric = false;
+                        options.Password.RequireLowercase = false;
+                        options.Password.RequireUppercase = false;
+                        options.Password.RequireDigit = false;
+                    })
                     .AddEntityFrameworkStores<CmsShoppingCartContext>()
                     .AddDefaultTokenProviders();
         }
