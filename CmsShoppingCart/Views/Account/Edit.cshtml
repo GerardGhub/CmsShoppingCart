@@ -1,4 +1,4 @@
-﻿@model User
+﻿@model UserEdit
 
 @{
     ViewData["Title"] = "Edit Account";
@@ -11,8 +11,6 @@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             
-            <input type="hidden" asp-for="UserName" />
-
             <div class="form-group">
                 <label asp-for="Email" class="control-label"></label>
                 <input asp-for="Email" class="form-control" />
