@@ -88,5 +88,13 @@ namespace CmsShoppingCart.Controllers
 
             return View(login);
         }
+
+        // GET /account/logout
+        public async Task<IActionResult> Logout()
+        {
+            await signInManager.SignOutAsync();
+
+            return Redirect("/");
+        }
     }
 }
