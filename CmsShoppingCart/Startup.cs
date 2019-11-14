@@ -34,6 +34,8 @@ namespace CmsShoppingCart
                 //options.IdleTimeout = TimeSpan.FromDays(2)
             });
 
+            services.AddRouting(options => options.LowercaseUrls = true);
+
             services.AddControllersWithViews();
 
             services.AddDbContext<CmsShoppingCartContext>(options => options.UseSqlServer(Configuration.GetConnectionString("CmsShoppingCartContext")));
